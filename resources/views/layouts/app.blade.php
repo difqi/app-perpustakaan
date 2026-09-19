@@ -97,6 +97,26 @@
             border-top: 1px solid #e5e7eb;
             margin-top: 40px;
         }
+
+        label {
+        display: block;
+        margin-top: 12px;
+        font-weight: bold;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 6px;
+            margin-top: 4px;
+            box-sizing: border-box;
+        }
+
+        .error {
+            color: #b91c1c;
+            font-size: 14px;
+            margin-top: 4px;
+        }
     </style>
 </head>
 
