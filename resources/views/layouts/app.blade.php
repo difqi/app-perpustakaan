@@ -117,6 +117,70 @@
             font-size: 14px;
             margin-top: 4px;
         }
+        
+        .pagination-wrapper {
+    margin-top: 20px;
+}
+
+.pagination-wrapper nav {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.pagination-wrapper svg {
+    width: 18px;
+    height: 18px;
+    vertical-align: middle;
+}
+
+.pagination-wrapper a,
+.pagination-wrapper span {
+    font-size: 14px;
+}
+
+.pagination-wrapper {
+    margin-top: 20px;
+    background: #1e3a8a;
+    padding: 16px;
+    border-radius: 4px;
+    color: #ffffff;
+}
+
+.pagination-wrapper nav {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.pagination-wrapper nav > div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.pagination-wrapper svg {
+    width: 18px;
+    height: 18px;
+    vertical-align: middle;
+}
+
+.pagination-wrapper a {
+    color: #ffffff;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.pagination-wrapper span {
+    color: #e5e7eb;
+    font-size: 14px;
+}
+
+.pagination-wrapper a:hover {
+    color: #bfdbfe;
+}
     </style>
 </head>
 
