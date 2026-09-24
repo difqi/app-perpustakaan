@@ -6,6 +6,41 @@
 
     <h1>Daftar Anggota</h1>
 
+    <p>
+        <a href="{{ route('members.create') }}" class="btn">
+            + Tambah Anggota
+        </a>
+    </p>
+
+
+    {{-- Form Search --}}
+    <form action="{{ route('members.index') }}" method="GET">
+
+        <label for="search">Cari Nama Anggota</label>
+
+        <input
+            type="text"
+            name="search"
+            id="search"
+            placeholder="Masukkan nama anggota..."
+            value="{{ request('search') }}"
+        >
+
+        <p>
+            <button type="submit" class="btn">
+                Cari
+            </button>
+
+            @if (request('search'))
+                <a href="{{ route('members.index') }}">
+                    Reset
+                </a>
+            @endif
+        </p>
+
+    </form>
+
+
     <table>
 
         <thead>
@@ -15,9 +50,12 @@
                 <th>NIM</th>
                 <th>Email</th>
                 <th>No. Telepon</th>
+                <th>Alamat</th>
                 <th>Status</th>
+                <th>Aksi</th>
             </tr>
         </thead>
+
 
         <tbody>
 
@@ -35,8 +73,41 @@
 
                     <td>{{ $member['nomor_telepon'] }}</td>
 
+                    <td>{{ $member['alamat'] }}</td>
+
                     <td>
                         {{ ucfirst($member['status']) }}
+                    </td>
+
+                    <td>
+
+                        <a href="{{ route('members.show', $member['id']) }}">
+                            Detail
+                        </a>
+
+                        |
+
+                        <a href="{{ route('members.edit', $member['id']) }}">
+                            Edit
+                        </a>
+
+                        |
+
+                        <form
+                            class="inline"
+                            action="{{ route('members.destroy', $member['id']) }}"
+                            method="POST"
+                        >
+
+                            @csrf
+                            @method('DELETE')
+
+                            <button type="submit">
+                                Hapus
+                            </button>
+
+                        </form>
+
                     </td>
 
                 </tr>
@@ -45,8 +116,19 @@
 
                 <tr>
 
-                    <td colspan="6">
-                        Belum ada data anggota.
+                    <td colspan="8">
+
+                        @if (request('search'))
+
+                            Tidak ada anggota dengan nama
+                            "{{ request('search') }}".
+
+                        @else
+
+                            Belum ada data anggota.
+
+                        @endif
+
                     </td>
 
                 </tr>
@@ -57,13 +139,11 @@
 
     </table>
 
-    <p>
-        <em>
-            Catatan: data di atas masih data dummy
-            (array statis di Controller).
-            Form tambah/edit anggota dan CRUD lengkap anggota
-            baru dibuat mulai Pertemuan 5.
-        </em>
-    </p>
+
+   @if ($members->hasPages())
+    <div class="pagination-wrapper">
+        {{ $members->appends(request()->query())->links() }}
+    </div>
+@endif
 
 @endsection

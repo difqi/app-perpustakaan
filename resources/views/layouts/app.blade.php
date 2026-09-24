@@ -105,7 +105,8 @@
         }
 
         input,
-        select {
+        select,
+        textarea {
             width: 100%;
             padding: 6px;
             margin-top: 4px;
