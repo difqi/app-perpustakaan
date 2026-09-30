@@ -120,68 +120,97 @@
         }
         
         .pagination-wrapper {
-    margin-top: 20px;
-}
+        margin-top: 20px;
+        }
 
-.pagination-wrapper nav {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
+        .pagination-wrapper nav {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
 
-.pagination-wrapper svg {
-    width: 18px;
-    height: 18px;
-    vertical-align: middle;
-}
+        .pagination-wrapper svg {
+            width: 18px;
+            height: 18px;
+            vertical-align: middle;
+        }
 
-.pagination-wrapper a,
-.pagination-wrapper span {
-    font-size: 14px;
-}
+        .pagination-wrapper a,
+        .pagination-wrapper span {
+            font-size: 14px;
+        }
 
-.pagination-wrapper {
-    margin-top: 20px;
-    background: #1e3a8a;
-    padding: 16px;
-    border-radius: 4px;
-    color: #ffffff;
-}
+        .pagination-wrapper {
+            margin-top: 20px;
+            background: #1e3a8a;
+            padding: 16px;
+            border-radius: 4px;
+            color: #ffffff;
+        }
 
-.pagination-wrapper nav {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
+        .pagination-wrapper nav {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
 
-.pagination-wrapper nav > div {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 12px;
-    flex-wrap: wrap;
-}
+        .pagination-wrapper nav > div {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
 
-.pagination-wrapper svg {
-    width: 18px;
-    height: 18px;
-    vertical-align: middle;
-}
+        .pagination-wrapper svg {
+            width: 18px;
+            height: 18px;
+            vertical-align: middle;
+        }
 
-.pagination-wrapper a {
-    color: #ffffff;
-    font-size: 14px;
-    text-decoration: none;
-}
+        .pagination-wrapper a {
+            color: #ffffff;
+            font-size: 14px;
+            text-decoration: none;
+        }
 
-.pagination-wrapper span {
-    color: #e5e7eb;
-    font-size: 14px;
-}
+        .pagination-wrapper span {
+            color: #e5e7eb;
+            font-size: 14px;
+        }
 
-.pagination-wrapper a:hover {
-    color: #bfdbfe;
-}
+        .pagination-wrapper a:hover {
+            color: #bfdbfe;
+        }
+
+        /* Badge status peminjaman */
+
+        .status-badge {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 600;
+            line-height: 1.4;
+        }
+
+        /* Buku sudah dikembalikan */
+        .status-dikembalikan {
+            background-color: #dcfce7;
+            color: #166534;
+        }
+
+        /* Buku sedang dipinjam */
+        .status-dipinjam {
+            background-color: #fef3c7;
+            color: #92400e;
+        }
+
+        /* Buku terlambat */
+        .status-terlambat {
+            background-color: #fee2e2;
+            color: #991b1b;
+        }
     </style>
 </head>
 
