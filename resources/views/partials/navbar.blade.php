@@ -1,39 +1,78 @@
 <nav>
+    <div class="brand">📚 Perpustakaan Digital Kampus</div>
 
-    <div class="brand">
-        📚 Perpustakaan Digital Kampus
-    </div>
+    @auth
+        <ul class="nav-menu">
+            <li>
+                <a
+                    href="{{ route('books.index') }}"
+                    class="{{ request()->routeIs('books.*') ? 'active' : '' }}"
+                >
+                    Buku
+                </a>
+            </li>
 
-    <ul>
+            @if (auth()->user()->role === 'admin')
+                <li>
+                    <a
+                        href="{{ route('categories.index') }}"
+                        class="{{ request()->routeIs('categories.*') ? 'active' : '' }}"
+                    >
+                        Kategori
+                    </a>
+                </li>
+            @endif
 
-        <li>
-            <a href="{{ route('books.index') }}"
-               class="{{ request()->routeIs('books.*') ? 'active' : '' }}">
-                Buku
+            <li>
+                <a
+                    href="{{ route('members.index') }}"
+                    class="{{ request()->routeIs('members.*') ? 'active' : '' }}"
+                >
+                    Anggota
+                </a>
+            </li>
+
+            <li>
+                <a
+                    href="{{ route('loans.index') }}"
+                    class="{{ request()->routeIs('loans.*') ? 'active' : '' }}"
+                >
+                    Peminjaman
+                </a>
+            </li>
+        </ul>
+
+        <div class="navbar-user">
+
+            <a
+                href="{{ route('profile.show') }}"
+                class="profile-link {{ request()->routeIs('profile.*') ? 'active' : '' }}"
+            >
+                {{ auth()->user()->name }}
+                ({{ ucfirst(auth()->user()->role) }})
             </a>
-        </li>
 
-        <li>
-            <a href="{{ route('categories.index') }}"
-               class="{{ request()->routeIs('categories.*') ? 'active' : '' }}">
-                Kategori
-            </a>
-        </li>
+            <form
+                action="{{ route('logout') }}"
+                method="POST"
+                class="inline"
+            >
+                @csrf
 
-        <li>
-            <a href="{{ route('members.index') }}"
-               class="{{ request()->routeIs('members.*') ? 'active' : '' }}">
-                Anggota
-            </a>
-        </li>
+                <button type="submit" class="btn-logout">
+                    Logout
+                </button>
+            </form>
 
-        <li>
-            <a href="{{ route('loans.index') }}"
-               class="{{ request()->routeIs('loans.*') ? 'active' : '' }}">
-                Peminjaman
-            </a>
-        </li>
+        </div>
+    @endauth
 
-    </ul>
-
+    @guest
+        <a
+            href="{{ route('login') }}"
+            class="{{ request()->routeIs('login') ? 'active' : '' }}"
+        >
+            Login
+        </a>
+    @endguest
 </nav>

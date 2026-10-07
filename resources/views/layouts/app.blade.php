@@ -5,7 +5,9 @@
     <title>@yield('title', 'Perpustakaan Digital Kampus')</title>
 
     <style>
-        * { box-sizing: border-box; }
+        * {
+            box-sizing: border-box;
+        }
 
         body {
             font-family: sans-serif;
@@ -13,40 +15,108 @@
             color: #1f2937;
         }
 
+        /* =========================
+        NAVBAR
+        ========================== */
+
         nav {
+            position: relative;
             background: #1e3a8a;
             padding: 14px 40px;
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
+            min-height: 56px;
         }
 
         nav .brand {
             color: #fff;
             font-weight: bold;
             font-size: 18px;
+            white-space: nowrap;
         }
 
-        nav ul {
+        /* Menu utama selalu berada di tengah navbar */
+        nav .nav-menu {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
             list-style: none;
             display: flex;
+            align-items: center;
             gap: 20px;
             margin: 0;
             padding: 0;
         }
 
-        nav ul li a {
+        nav .nav-menu li {
+            margin: 0;
+            padding: 0;
+        }
+
+        nav .nav-menu li a {
             color: #cbd5e1;
             text-decoration: none;
             padding: 6px 4px;
+            white-space: nowrap;
         }
 
-        nav ul li a.active {
+        nav .nav-menu li a:hover {
+            color: #ffffff;
+        }
+
+        nav .nav-menu li a.active {
             color: #fff;
             font-weight: bold;
             border-bottom: 2px solid #fff;
         }
+
+        /* Area akun di kanan */
+        nav .navbar-user {
+            margin-left: auto;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #cbd5e1;
+            font-size: 14px;
+            white-space: nowrap;
+        }
+
+        nav .profile-link {
+            color: #e2e8f0;
+            text-decoration: none;
+            padding: 6px 10px;
+            border-radius: 6px;
+            transition: background-color 0.2s ease, color 0.2s ease;
+        }
+
+        nav .profile-link:hover {
+            background-color: rgba(255, 255, 255, 0.12);
+            color: #ffffff;
+        }
+
+        nav .profile-link.active {
+            background-color: rgba(255, 255, 255, 0.16);
+            color: #ffffff;
+        }
+
+        nav .btn-logout {
+            background: transparent;
+            border: 1px solid #cbd5e1;
+            color: #e2e8f0;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        nav .btn-logout:hover {
+            background-color: rgba(255, 255, 255, 0.12);
+            color: #ffffff;
+        }
+
+        /* =========================
+        MAIN CONTENT
+        ========================== */
 
         main {
             max-width: 900px;
@@ -60,11 +130,16 @@
             margin-top: 16px;
         }
 
-        th, td {
+        th,
+        td {
             border: 1px solid #ccc;
             padding: 8px 12px;
             text-align: left;
         }
+
+        /* =========================
+        ALERT
+        ========================== */
 
         .alert-success {
             background: #d1fae5;
@@ -73,6 +148,10 @@
             border-radius: 4px;
             margin-bottom: 16px;
         }
+
+        /* =========================
+        BUTTON
+        ========================== */
 
         .btn {
             display: inline-block;
@@ -89,19 +168,14 @@
             display: inline;
         }
 
-        footer {
-            text-align: center;
-            padding: 20px;
-            color: #6b7280;
-            font-size: 14px;
-            border-top: 1px solid #e5e7eb;
-            margin-top: 40px;
-        }
+        /* =========================
+        FORM
+        ========================== */
 
         label {
-        display: block;
-        margin-top: 12px;
-        font-weight: bold;
+            display: block;
+            margin-top: 12px;
+            font-weight: bold;
         }
 
         input,
@@ -118,27 +192,10 @@
             font-size: 14px;
             margin-top: 4px;
         }
-        
-        .pagination-wrapper {
-        margin-top: 20px;
-        }
 
-        .pagination-wrapper nav {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .pagination-wrapper svg {
-            width: 18px;
-            height: 18px;
-            vertical-align: middle;
-        }
-
-        .pagination-wrapper a,
-        .pagination-wrapper span {
-            font-size: 14px;
-        }
+        /* =========================
+        PAGINATION
+        ========================== */
 
         .pagination-wrapper {
             margin-top: 20px;
@@ -149,9 +206,12 @@
         }
 
         .pagination-wrapper nav {
+            position: static;
             display: flex;
             flex-direction: column;
             gap: 10px;
+            padding: 0;
+            min-height: auto;
         }
 
         .pagination-wrapper nav > div {
@@ -183,7 +243,9 @@
             color: #bfdbfe;
         }
 
-        /* Badge status peminjaman */
+        /* =========================
+        BADGE STATUS PEMINJAMAN
+        ========================== */
 
         .status-badge {
             display: inline-block;
@@ -194,22 +256,32 @@
             line-height: 1.4;
         }
 
-        /* Buku sudah dikembalikan */
         .status-dikembalikan {
             background-color: #dcfce7;
             color: #166534;
         }
 
-        /* Buku sedang dipinjam */
         .status-dipinjam {
             background-color: #fef3c7;
             color: #92400e;
         }
 
-        /* Buku terlambat */
         .status-terlambat {
             background-color: #fee2e2;
             color: #991b1b;
+        }
+
+        /* =========================
+        FOOTER
+        ========================== */
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #6b7280;
+            font-size: 14px;
+            border-top: 1px solid #e5e7eb;
+            margin-top: 40px;
         }
     </style>
 </head>
