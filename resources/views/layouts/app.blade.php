@@ -2,41 +2,41 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', 'Perpustakaan Digital Kampus')</title>
 
     <style>
-        * {
-            box-sizing: border-box;
-        }
+        * { box-sizing: border-box; }
 
         body {
-            font-family: sans-serif;
+            font-family: Arial, sans-serif;
             margin: 0;
             color: #1f2937;
+            background: #ffffff;
         }
 
         /* =========================
-        NAVBAR
-        ========================== */
+           NAVBAR
+        ========================= */
 
-        nav {
+        .main-navbar {
             position: relative;
             background: #1e3a8a;
             padding: 14px 40px;
             display: flex;
             align-items: center;
             min-height: 56px;
+            gap: 16px;
         }
 
-        nav .brand {
-            color: #fff;
+        .main-navbar .brand {
+            color: #ffffff;
             font-weight: bold;
             font-size: 18px;
             white-space: nowrap;
         }
 
-        /* Menu utama selalu berada di tengah navbar */
-        nav .nav-menu {
+        .main-navbar .nav-menu {
             position: absolute;
             left: 50%;
             transform: translateX(-50%);
@@ -48,30 +48,29 @@
             padding: 0;
         }
 
-        nav .nav-menu li {
+        .main-navbar .nav-menu li {
             margin: 0;
             padding: 0;
         }
 
-        nav .nav-menu li a {
+        .main-navbar .nav-menu li a {
             color: #cbd5e1;
             text-decoration: none;
             padding: 6px 4px;
             white-space: nowrap;
         }
 
-        nav .nav-menu li a:hover {
+        .main-navbar .nav-menu li a:hover {
             color: #ffffff;
         }
 
-        nav .nav-menu li a.active {
-            color: #fff;
+        .main-navbar .nav-menu li a.active {
+            color: #ffffff;
             font-weight: bold;
-            border-bottom: 2px solid #fff;
+            border-bottom: 2px solid #ffffff;
         }
 
-        /* Area akun di kanan */
-        nav .navbar-user {
+        .main-navbar .navbar-user {
             margin-left: auto;
             display: flex;
             align-items: center;
@@ -81,7 +80,7 @@
             white-space: nowrap;
         }
 
-        nav .profile-link {
+        .main-navbar .profile-link {
             color: #e2e8f0;
             text-decoration: none;
             padding: 6px 10px;
@@ -89,17 +88,17 @@
             transition: background-color 0.2s ease, color 0.2s ease;
         }
 
-        nav .profile-link:hover {
-            background-color: rgba(255, 255, 255, 0.12);
+        .main-navbar .profile-link:hover {
+            background: rgba(255, 255, 255, 0.12);
             color: #ffffff;
         }
 
-        nav .profile-link.active {
-            background-color: rgba(255, 255, 255, 0.16);
+        .main-navbar .profile-link.active {
+            background: rgba(255, 255, 255, 0.16);
             color: #ffffff;
         }
 
-        nav .btn-logout {
+        .main-navbar .btn-logout {
             background: transparent;
             border: 1px solid #cbd5e1;
             color: #e2e8f0;
@@ -109,20 +108,29 @@
             font-size: 14px;
         }
 
-        nav .btn-logout:hover {
-            background-color: rgba(255, 255, 255, 0.12);
+        .main-navbar .btn-logout:hover {
+            background: rgba(255, 255, 255, 0.12);
             color: #ffffff;
         }
 
         /* =========================
-        MAIN CONTENT
-        ========================== */
+           MAIN CONTENT
+        ========================= */
 
         main {
-            max-width: 900px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 30px 40px;
+            min-height: 60vh;
         }
+
+        h1 {
+            color: #1f2937;
+        }
+
+        /* =========================
+           TABLE
+        ========================= */
 
         table {
             border-collapse: collapse;
@@ -130,38 +138,85 @@
             margin-top: 16px;
         }
 
-        th,
-        td {
-            border: 1px solid #ccc;
-            padding: 8px 12px;
+        th, td {
+            border: 1px solid #e5e7eb;
+            padding: 10px 12px;
             text-align: left;
+            vertical-align: middle;
+        }
+
+        th {
+            background: #f8fafc;
+            font-weight: 600;
+            color: #374151;
+        }
+
+        tbody tr:hover {
+            background: #f9fafb;
         }
 
         /* =========================
-        ALERT
-        ========================== */
+           ALERT
+        ========================= */
 
         .alert-success {
             background: #d1fae5;
             color: #065f46;
             padding: 10px 14px;
-            border-radius: 4px;
+            border-radius: 6px;
             margin-bottom: 16px;
         }
 
         /* =========================
-        BUTTON
-        ========================== */
+           DASHBOARD
+        ========================= */
+
+        .stats-grid {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .stat-card {
+            flex: 1;
+            min-width: 160px;
+            background: #f8fafc;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .stat-card .value {
+            font-size: 32px;
+            font-weight: bold;
+            color: #1e3a8a;
+        }
+
+        .stat-card .label {
+            margin-top: 6px;
+            color: #6b7280;
+            font-size: 14px;
+        }
+
+        /* =========================
+           BUTTON
+        ========================= */
 
         .btn {
             display: inline-block;
-            padding: 6px 14px;
+            padding: 8px 14px;
             background: #2563eb;
-            color: #fff;
+            color: #ffffff;
             text-decoration: none;
-            border-radius: 4px;
+            border-radius: 6px;
             border: none;
             cursor: pointer;
+        }
+
+        .btn:hover {
+            background: #1d4ed8;
         }
 
         form.inline {
@@ -169,8 +224,8 @@
         }
 
         /* =========================
-        FORM
-        ========================== */
+           FORM
+        ========================= */
 
         label {
             display: block;
@@ -178,13 +233,12 @@
             font-weight: bold;
         }
 
-        input,
-        select,
-        textarea {
+        input, select, textarea {
             width: 100%;
-            padding: 6px;
+            padding: 8px;
             margin-top: 4px;
-            box-sizing: border-box;
+            border: 1px solid #d1d5db;
+            border-radius: 5px;
         }
 
         .error {
@@ -194,58 +248,68 @@
         }
 
         /* =========================
-        PAGINATION
-        ========================== */
+           CUSTOM PAGINATION
+        ========================= */
 
         .pagination-wrapper {
-            margin-top: 20px;
-            background: #1e3a8a;
-            padding: 16px;
-            border-radius: 4px;
-            color: #ffffff;
-        }
-
-        .pagination-wrapper nav {
-            position: static;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
+            margin-top: 24px;
             padding: 0;
-            min-height: auto;
+            background: transparent;
+            border: none;
+            box-shadow: none;
         }
 
-        .pagination-wrapper nav > div {
+        .custom-pagination {
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            gap: 12px;
+            justify-content: center;
             flex-wrap: wrap;
+            gap: 8px;
+            margin: 0;
+            padding: 0;
+            background: transparent;
         }
 
-        .pagination-wrapper svg {
-            width: 18px;
-            height: 18px;
-            vertical-align: middle;
-        }
-
-        .pagination-wrapper a {
-            color: #ffffff;
-            font-size: 14px;
+        .custom-pagination .page-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 38px;
+            height: 38px;
+            padding: 0 12px;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            background: #ffffff;
+            color: #1e40af;
             text-decoration: none;
-        }
-
-        .pagination-wrapper span {
-            color: #e5e7eb;
             font-size: 14px;
+            font-weight: 500;
+            transition: background-color 0.2s ease, border-color 0.2s ease;
         }
 
-        .pagination-wrapper a:hover {
-            color: #bfdbfe;
+        .custom-pagination a.page-btn:hover {
+            background: #eff6ff;
+            border-color: #2563eb;
+            color: #1d4ed8;
+        }
+
+        .custom-pagination .page-btn.current {
+            background: #1e40af;
+            border-color: #1e40af;
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        .custom-pagination .page-btn.disabled {
+            background: #f9fafb;
+            border-color: #e5e7eb;
+            color: #9ca3af;
+            cursor: not-allowed;
         }
 
         /* =========================
-        BADGE STATUS PEMINJAMAN
-        ========================== */
+           BADGE STATUS PEMINJAMAN
+        ========================= */
 
         .status-badge {
             display: inline-block;
@@ -257,23 +321,23 @@
         }
 
         .status-dikembalikan {
-            background-color: #dcfce7;
+            background: #dcfce7;
             color: #166534;
         }
 
         .status-dipinjam {
-            background-color: #fef3c7;
+            background: #fef3c7;
             color: #92400e;
         }
 
         .status-terlambat {
-            background-color: #fee2e2;
+            background: #fee2e2;
             color: #991b1b;
         }
 
         /* =========================
-        FOOTER
-        ========================== */
+           FOOTER
+        ========================= */
 
         footer {
             text-align: center;
@@ -283,24 +347,71 @@
             border-top: 1px solid #e5e7eb;
             margin-top: 40px;
         }
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 900px) {
+            .main-navbar {
+                flex-wrap: wrap;
+                justify-content: center;
+                padding: 14px 20px;
+            }
+
+            .main-navbar .nav-menu {
+                position: static;
+                transform: none;
+                order: 3;
+                width: 100%;
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 14px;
+            }
+
+            .main-navbar .navbar-user {
+                margin-left: auto;
+            }
+
+            main {
+                padding: 24px 20px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .main-navbar .navbar-user {
+                margin-left: 0;
+            }
+
+            main {
+                padding: 20px 12px;
+            }
+
+            th, td {
+                padding: 8px 6px;
+                font-size: 13px;
+            }
+
+            .custom-pagination .page-btn {
+                min-width: 34px;
+                height: 34px;
+                padding: 0 8px;
+                font-size: 12px;
+            }
+        }
     </style>
 </head>
 
 <body>
-
     @include('partials.navbar')
 
     <main>
-
         @include('partials.alert')
-
         @yield('content')
-
     </main>
 
     <footer>
         &copy; {{ date('Y') }} Sistem Perpustakaan Digital Kampus
     </footer>
-
 </body>
 </html>
